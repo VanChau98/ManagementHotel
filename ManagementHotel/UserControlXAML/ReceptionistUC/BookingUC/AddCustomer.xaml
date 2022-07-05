@@ -1,0 +1,116 @@
+﻿<UserControl x:Class="ManagementHotel.UserControlXAML.ReceptionistUC.BookingUC.AddCustomer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ManagementHotel.UserControlXAML.ReceptionistUC.BookingUC"
+             mc:Ignorable="d" 
+             
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             
+             DataContext="{StaticResource AddCustomerVM}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <materialDesign:Card Background="White">
+            <StackPanel>
+                <StackPanel.Resources>
+                    <Style TargetType="WrapPanel">
+                        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+                        <Setter Property="Margin" Value="15 15 0 0"></Setter>
+                    </Style>
+                </StackPanel.Resources>
+                <Label Content="Add Customer Infomation" 
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       FontSize="16"
+                       FontWeight="Bold"
+                       Margin="15 10 0 20"></Label>
+                <WrapPanel>
+                    <Label Content="Indentity card: " Width="100"></Label>
+                    <TextBox x:Name="IndentityCardTextbox" 
+                             materialDesign:HintAssist.Hint="Input indentity card"
+                            Width="300"
+                             Text="{Binding Cmnd}"></TextBox>
+                </WrapPanel>
+                <WrapPanel>
+                    <Label Content="Full name: " Width="100"></Label>
+                    <TextBox x:Name="FullnameTextbox"
+                             materialDesign:HintAssist.Hint="Input full name"
+                             Width="300"
+                             Text="{Binding Fullname}"></TextBox>
+                </WrapPanel>
+                <WrapPanel>
+                    <Label Content="Gender: " Width="100"></Label>
+                    <ComboBox x:Name="GemdeTextbox"
+                             materialDesign:HintAssist.Hint="Input gender"
+                             Width="100"
+                             Text="{Binding Gender}">
+                        <ComboBoxItem>Male</ComboBoxItem>
+                        <ComboBoxItem>Female</ComboBoxItem>
+                    </ComboBox>
+                </WrapPanel>
+                <WrapPanel>
+                    <Label Content="Phone Number: " Width="100"></Label>
+                    <TextBox x:Name="PhonenumberTextbox"
+                             materialDesign:HintAssist.Hint="Input phone number"
+                             Width="300"
+                             Text="{Binding Phone}"></TextBox>
+                </WrapPanel>
+                <WrapPanel>
+                    <Label Content="Address: " Width="100"></Label>
+                    <TextBox x:Name="AddressTextbox"
+                             materialDesign:HintAssist.Hint="Input address"
+                             Width="300"
+                             Text="{Binding Address}"></TextBox>
+                </WrapPanel>
+                <WrapPanel >
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <WrapPanel >
+                                <Label Content="Room: " Width="100" Margin="-15 0 0 0"></Label>
+                                <ComboBox materialDesign:HintAssist.Hint="Room code"
+                                          Width="80"
+                                          Text="{Binding Name}"
+                                          SelectedItem="{Binding Name}"
+                                          ItemsSource="{Binding MyItemRoom}"></ComboBox>
+                            </WrapPanel>
+                        </Grid>
+                        <Grid Grid.Column="1" Margin="40 0 0 0">
+                            <WrapPanel >
+                                <Label Content="Used time: " Width="80"></Label>
+                                <ComboBox materialDesign:HintAssist.Hint="Choose time"
+                                          Width="100"
+                                          Text="{Binding TimeUsed}">
+                                    <ComboBoxItem>1 day</ComboBoxItem>
+                                    <ComboBoxItem>2 day</ComboBoxItem>
+                                    <ComboBoxItem>3 day</ComboBoxItem>
+                                    <ComboBoxItem>5 day</ComboBoxItem>
+                                </ComboBox>
+                            </WrapPanel>
+                        </Grid>
+                    </Grid>
+                </WrapPanel>
+                <WrapPanel>
+                    <Label Content="Checkin date: " 
+                           VerticalAlignment="Bottom"
+                           Width="100"></Label>
+                    <DatePicker Width="100"
+                                materialDesign:HintAssist.Hint="Pick Date"
+                               Style="{StaticResource MaterialDesignFloatingHintDatePicker}" 
+                                Text="{Binding Checkin}"/>
+                </WrapPanel>
+                <Button Content="Save" 
+                        Width="100"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="160 30 0 30"
+                        Command="{Binding SaveCommand}"
+                        ></Button>
+            </StackPanel>
+        </materialDesign:Card>
+    </Grid>
+</UserControl>

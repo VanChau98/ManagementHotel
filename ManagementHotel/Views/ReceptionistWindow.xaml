@@ -1,0 +1,104 @@
+﻿<Window x:Class="ManagementHotel.Views.ReceptionistWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ManagementHotel.Views"
+        mc:Ignorable="d"
+        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:controlBar="clr-namespace:ManagementHotel.UserControlXAML"
+        xmlns:receptionistUC="clr-namespace:ManagementHotel.UserControlXAML.ReceptionistUC"
+        
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        Title="ReceptionistWindow" Height="600" Width="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <controlBar:ControlBar></controlBar:ControlBar>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <Grid Grid.Column="0">
+                    <StackPanel Orientation="Vertical"  Background="BlueViolet" >
+                        <Label Content="Luxury Hotel"
+                               Foreground="Orange"
+                               FontSize="28"
+                               FontWeight="Bold"></Label>
+                        <Label Content="Receptionist" 
+                               Foreground="LightGray" 
+                               FontWeight="Bold" 
+                               FontSize="20" 
+                               HorizontalAlignment="Center"></Label>
+                        <ListView x:Name="ReceptionistMenu" SelectionChanged="ReceptionistMenu_SelectionChanged">
+                            <ListViewItem Margin="0 10 0 0">
+                                <WrapPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="TableLarge" 
+                                                             Width="40" 
+                                                             Height="40" 
+                                                             Foreground="LightGray"></materialDesign:PackIcon>
+                                    <Label Content="Booking Room" 
+                                           VerticalAlignment="Bottom" 
+                                           Foreground="LightGray" 
+                                           FontSize="15" 
+                                           FontWeight="Bold"></Label>
+                                </WrapPanel>
+                            </ListViewItem>
+                            <ListViewItem Margin="0 10 0 0">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="DatabaseSearch" 
+                                                             Width="40" 
+                                                             Height="40" 
+                                                             Foreground="LightGray"></materialDesign:PackIcon>
+                                    <Label Content="Room" 
+                                           FontSize="15" 
+                                           Foreground="LightGray" 
+                                           VerticalAlignment="Bottom" 
+                                           FontWeight="Bold"></Label>
+                                </StackPanel>
+                            </ListViewItem>
+                            <ListViewItem Margin="0 10 0 0">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="SearchWeb" 
+                                                             Width="40" 
+                                                             Height="40" 
+                                                             Foreground="LightGray"></materialDesign:PackIcon>
+                                    <Label Content="Service" 
+                                           FontSize="15" 
+                                           Foreground="LightGray"
+                                           VerticalAlignment="Bottom" FontWeight="Bold"></Label>
+                                </StackPanel>
+                            </ListViewItem>
+                            <ListViewItem Margin="0 10 0 0">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Ballot" 
+                                                             Width="40" 
+                                                             Height="40" 
+                                                             Foreground="LightGray"></materialDesign:PackIcon>
+                                    <Label Content="Export Order" 
+                                           FontSize="15" 
+                                           Foreground="LightGray"
+                                           VerticalAlignment="Bottom" FontWeight="Bold"></Label>
+                                </StackPanel>
+                            </ListViewItem>
+                        </ListView>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1">
+                <receptionistUC:Booking x:Name="booking"></receptionistUC:Booking>
+                <receptionistUC:Room x:Name="room" Visibility="Hidden"></receptionistUC:Room>
+                <receptionistUC:Service x:Name="service" Visibility="Hidden"></receptionistUC:Service>
+                <receptionistUC:ExportOrder x:Name="exportOrder" Visibility="Hidden"></receptionistUC:ExportOrder>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

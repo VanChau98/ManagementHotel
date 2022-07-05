@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="ManagementHotel.UserControlXAML.ReceptionistUC.BookingUC.AddService"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ManagementHotel.UserControlXAML.ReceptionistUC.BookingUC"
+             mc:Ignorable="d" 
+             
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="0 20 0 20">
+            <WrapPanel VerticalAlignment="Center">
+                <Label Content="Choose Room:"
+                           FontSize="16"
+                           FontWeight="Bold"
+                           Margin="10 0 10 0"></Label>
+                <ComboBox materialDesign:HintAssist.Hint="Room"
+                              Width="150"
+                              FontSize="16"></ComboBox>
+            </WrapPanel>
+        </Grid>
+        <Grid Grid.Row="1" >
+            <Label Content="List service"
+                       FontSize="16"
+                       Margin="10 0 0 0"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"></Label>
+            <Button Content="Add service"
+                        Width="120"
+                        HorizontalAlignment="Right"
+                        Margin="0 0 20 0"
+                        VerticalAlignment="Center">
+
+            </Button>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Label Content="List service for room" FontSize="50"></Label>
+            <!--<ListView>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ID" ></GridViewColumn>
+                        <GridViewColumn Header="Price"></GridViewColumn>
+                        <GridViewColumn Header="Description"></GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>-->
+        </Grid>
+    </Grid>
+</UserControl>

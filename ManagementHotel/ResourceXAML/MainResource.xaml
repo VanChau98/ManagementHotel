@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ManagementHotel.ResourceXAML"
+                    xmlns:mainViewModel="clr-namespace:ManagementHotel.ViewModels"
+                    xmlns:receptionist="clr-namespace:ManagementHotel.ViewModels.ReceptionistVM"
+                    xmlns:booking="clr-namespace:ManagementHotel.ViewModels.ReceptionistVM.BookingVM">
+    <mainViewModel:MainViewModel x:Key="MainVM"></mainViewModel:MainViewModel>
+    <!--Receptionist-->
+    <receptionist:RoomViewModel x:Key="RoomVM"></receptionist:RoomViewModel>
+    <receptionist:ServiceViewModel x:Key="ServiceVM"></receptionist:ServiceViewModel>
+    <booking:AddCustomerViewModel x:Key="AddCustomerVM"></booking:AddCustomerViewModel>
+    
+    <!--Manager-->
+    
+    
+</ResourceDictionary>
