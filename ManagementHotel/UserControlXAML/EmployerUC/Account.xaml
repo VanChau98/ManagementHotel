@@ -8,7 +8,8 @@
              
               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              
-             d:DesignHeight="450" d:DesignWidth="800">
+             DataContext="{StaticResource AccountVM}"
+             >
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
@@ -27,9 +28,9 @@
                         <ComboBox IsEditable="True" 
                                       IsTextSearchEnabled="True" IsSynchronizedWithCurrentItem="True" 
                                       materialDesign:HintAssist.Hint="Nhan vien" 
-                                      Width="150" Text="{Binding MySelectedItem, Mode=TwoWay}" 
+                                      Width="150" Text="{Binding Fullname, Mode=TwoWay}" 
                                       SelectedItem="{Binding MySelectedItem, Mode=TwoWay}" 
-                                      ItemsSource="{Binding MyItems}"></ComboBox>
+                                      ItemsSource="{Binding MyItemsAccount}"></ComboBox>
                         <Button Margin="20,0,0,0" Command="{Binding SearchCommand}">
                             <materialDesign:PackIcon Kind="AccountSearch" Height="25" Width="30"/>
                         </Button>
@@ -41,17 +42,23 @@
                     <WrapPanel VerticalAlignment="Stretch"
                                    HorizontalAlignment="Center">
                         <StackPanel Margin="0 10 20 0">
-                            <ComboBox Padding="2" Text="{Binding GT, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                            <ComboBox Padding="2" Text="{Binding UserFullname, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                                      SelectedItem="{Binding MySelectedItemsUser}"
+                                      ItemsSource="{Binding MyItemsUser}"
                                           Width="120" materialDesign:HintAssist.Hint="Nhan vien" 
                                           Style="{StaticResource MaterialDesignFloatingHintComboBox}">
                             </ComboBox>
+                            <TextBox Text="{Binding Role,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                         Width="120" 
+                                         materialDesign:HintAssist.Hint="Role" 
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                         </StackPanel>
                         <StackPanel Margin="20 10 0 0">
-                            <TextBox Text="{Binding CMND,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                            <TextBox Text="{Binding Username,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
                                          Width="120" 
                                          materialDesign:HintAssist.Hint="Tai khoan" 
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                            <TextBox Text="{Binding DC,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                            <TextBox Text="{Binding Password,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
                                          Width="120" 
                                          materialDesign:HintAssist.Hint="Mat khau" 
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
@@ -62,28 +69,31 @@
                                    Margin="0 30 0 0">
                         <Button Content="Add" 
                                     Width="80"
-                                    ></Button>
+                                    Command="{Binding AddCommand}"></Button>
                     </WrapPanel>
                 </StackPanel>
             </Grid>
         </Grid>
         <Grid Grid.Row="1" Margin="0 10 0 0">
-            <Label Content="List Account" HorizontalAlignment="Left"
-                   VerticalAlignment="Bottom"
+            <RadioButton Content="List Account" HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
                    Margin="10 0 0 0"
-                   FontSize="14"></Label>
+                   Style="{StaticResource MaterialDesignTabRadioButton}"
+                   FontSize="14"
+                         Command="{Binding ListCommand}"></RadioButton>
             <Button Content="Delete" Width="80" HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
                     Margin="0 0 10 0"
-                    Background="Gray"></Button>
+                    Command="{Binding DeleteCommand}"></Button>
         </Grid>
         <Grid Grid.Row="2" Margin="0 10 0 0">
-            <ListView ItemsSource="{Binding MyList}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+            <ListView ItemsSource="{Binding ListAccount}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="MANV" DisplayMemberBinding="{Binding MaKH}"></GridViewColumn>
-                        <GridViewColumn Header="TK" DisplayMemberBinding="{Binding TenKH}"></GridViewColumn>
-                        <GridViewColumn Header="ROLE" DisplayMemberBinding="{Binding GT}"></GridViewColumn>
+                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding UserID}"></GridViewColumn>
+                        <GridViewColumn Header="Username" DisplayMemberBinding="{Binding Username}"></GridViewColumn>
+                        <GridViewColumn Header="ROLE" DisplayMemberBinding="{Binding Role}"></GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>

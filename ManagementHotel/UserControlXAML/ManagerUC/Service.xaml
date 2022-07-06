@@ -8,7 +8,8 @@
              
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              
-             d:DesignHeight="450" d:DesignWidth="800">
+             DataContext="{StaticResource ManagerServiceVM}"
+             >
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
@@ -32,9 +33,9 @@
                                       IsSynchronizedWithCurrentItem="True" 
                                       materialDesign:HintAssist.Hint="Dich vu" 
                                       Width="150" 
-                                      Text="{Binding MySelectedItem, Mode=TwoWay}" 
+                                      Text="{Binding SearchName, Mode=TwoWay}" 
                                       SelectedItem="{Binding MySelectedItem, Mode=TwoWay}" 
-                                      ItemsSource="{Binding MyItems}"></ComboBox>
+                                      ItemsSource="{Binding MyItemsService}"></ComboBox>
                         <Button Margin="20,0,0,0" Command="{Binding SearchCommand}">
                             <materialDesign:PackIcon Kind="AccountSearch" Height="25" Width="30"/>
                         </Button>
@@ -46,17 +47,14 @@
                     <WrapPanel VerticalAlignment="Center"
                                    HorizontalAlignment="Center">
                         <StackPanel Margin="0 20 20 0">
-                            <TextBox IsReadOnly="True" 
-                                         Text="{Binding MAKH, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                            <TextBox 
+                                         Text="{Binding Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
                                          Width="120" materialDesign:HintAssist.Hint="Ma khach hang" 
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                            <TextBox Text="{Binding HT,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
-                                         Width="120" 
-                                         materialDesign:HintAssist.Hint="Ho va ten" 
-                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                            
                         </StackPanel>
                         <StackPanel Margin="20 20 0 0">
-                            <TextBox Text="{Binding CMND,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                            <TextBox Text="{Binding Price,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
                                          Width="120" 
                                          materialDesign:HintAssist.Hint="CMND" 
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
@@ -65,37 +63,39 @@
                     <WrapPanel VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
                                    Margin="0 30 0 0">
-                        <Button Content="Update" 
+                        <Button Content="Add" 
                                     Width="80"
-                                    ></Button>
+                                    Command="{Binding AddCommand}"></Button>
                         <Button Content="Update"
                                 Width="80"
                                 Margin="20 0 0 0"
-                                Background="Gray"></Button>
+                                Command="{Binding UpdateCommand}"></Button>
                     </WrapPanel>
                 </StackPanel>
             </Grid>
         </Grid>
         <Grid Grid.Row="1" Margin="0 20 0 0">
-            <Label Content="List Service"
+            <RadioButton Content="List Service"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Bottom"
                    FontSize="14"
-                   Margin="10 0 0 0"></Label>
+                   Margin="10 0 0 0"
+                         Style="{StaticResource MaterialDesignTabRadioButton}"
+                         Command="{Binding ListCommand}"></RadioButton>
             <Button Content="Delete"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
                     Width="80"
                     Margin="0 0 10 0"
-                    Background="Gray"></Button>
+                    Command="{Binding DeleteCommand}"></Button>
         </Grid>
         <Grid Grid.Row="2" Margin="0 10 0 0">
-            <ListView ItemsSource="{Binding MyList}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+            <ListView ItemsSource="{Binding ListService}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding MaKH}"></GridViewColumn>
-                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding TenKH}"></GridViewColumn>
-                        <GridViewColumn Header="Price" DisplayMemberBinding="{Binding GT}"></GridViewColumn>
+                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
+                        <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
 
                     </GridView>
                 </ListView.View>

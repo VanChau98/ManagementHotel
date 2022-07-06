@@ -8,7 +8,7 @@
              
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              
-             d:DesignHeight="450" d:DesignWidth="800">
+             >
     <Grid Background="White">
         <Grid>
             <Grid.RowDefinitions>
@@ -20,10 +20,11 @@
                     <ComboBox VerticalAlignment="Center"
                               HorizontalAlignment="Left"
                               materialDesign:HintAssist.Hint="Choose room"
-                              FontSize="18"
+                              FontSize="16"
                               FontWeight="Bold"></ComboBox>
                     <Button Content="Export"
-                            Margin="20 0 0 0"></Button>
+                            Margin="20 0 0 0"
+                            Command="{Binding ExportCommand}"></Button>
                 </WrapPanel>
             </Grid>
             <Grid Grid.Row="1">
@@ -35,7 +36,7 @@
                                FontSize="20"
                                FontWeight="Bold"
                                Foreground="Red"></Label>
-                        <TextBlock Text="204"
+                        <TextBlock Text="{Binding RoomName}"
                                    FontSize="20"
                                    FontWeight="Bold"
                                    Foreground="Red"
@@ -51,28 +52,32 @@
                                        Width="100"></Label>
                                 <TextBlock Width="250" 
                                            Margin="10 0 0 0"
-                                           Background="DarkGray"></TextBlock>
+                                          Text="{Binding Fullname}"
+                                           FontWeight="Bold"></TextBlock>
                             </WrapPanel>
                             <WrapPanel Margin="0 5 0 0">
                                 <Label Content="So dien thoai: "
                                        Width="100"></Label>
                                 <TextBlock Width="250" 
                                            Margin="10 0 0 0"
-                                           Background="DarkGray"></TextBlock>
+                                           Text="{Binding Phone}"
+                                           FontWeight="Bold"></TextBlock>
                             </WrapPanel>
                             <WrapPanel Margin="0 5 0 0">
                                 <Label Content="Gioi tinh: "
                                        Width="100"></Label>
                                 <TextBlock Width="250" 
                                            Margin="10 0 0 0"
-                                           Background="DarkGray"></TextBlock>
+                                           Text="{Binding Gender}"
+                                           FontWeight="Bold"></TextBlock>
                             </WrapPanel>
                             <WrapPanel Margin="0 5 0 0">
                                 <Label Content="Dia chi: "
                                        Width="100"></Label>
                                 <TextBlock Width="250" 
                                            Margin="10 0 0 0"
-                                           Background="DarkGray"></TextBlock>
+                                           Text="{Binding Address}"
+                                           FontWeight="Bold"></TextBlock>
                             </WrapPanel>
                         </StackPanel>
                         <StackPanel Margin="40 0 0 0">
@@ -82,19 +87,21 @@
                                 <Label Content="Check in:"></Label>
                                 <TextBlock Width="100"
                                            Margin="5 0 0 0"
-                                           Background="DarkGray"></TextBlock>
+                                           Text="{Binding Checkin}"
+                                           FontWeight="Bold"></TextBlock>
                                 <Label Content="Check out:"
                                        Margin="20 0 0 0"></Label>
                                 <TextBlock Width="100"
                                            Margin="5 0 0 0"
-                                           Background="DarkGray"></TextBlock>
+                                           Text="{Binding Checkout}"
+                                           FontWeight="Bold"></TextBlock>
                             </WrapPanel>
-                            <ListView ItemsSource="{Binding MyList}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                            <ListView ItemsSource="{Binding ListService}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn Header="DV" DisplayMemberBinding="{Binding MaKH}"></GridViewColumn>
-                                        <GridViewColumn Header="SL" DisplayMemberBinding="{Binding TenKH}"></GridViewColumn>
-                                        <GridViewColumn Header="Gia" DisplayMemberBinding="{Binding GT}"></GridViewColumn>
+                                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
+                                        <GridViewColumn Header="DV" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
+                                        <GridViewColumn Header="Gia" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
                                     </GridView>
                                 </ListView.View>
                             </ListView>
@@ -103,7 +110,7 @@
                                        Foreground="Red"></Label>
                                 <TextBlock Margin="30 0 0 0"
                                            Width="150"
-                                           Background="DarkGray"
+                                           Text="{Binding SumPrice}"
                                            FontWeight="Bold"></TextBlock>
                             </WrapPanel>
                         </StackPanel>

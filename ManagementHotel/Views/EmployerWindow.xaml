@@ -12,7 +12,7 @@
         
         WindowStyle="None"
         ResizeMode="NoResize"
-        Title="EmployerWindow" Height="450" Width="800">
+        Title="EmployerWindow" Height="650" Width="1000">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>

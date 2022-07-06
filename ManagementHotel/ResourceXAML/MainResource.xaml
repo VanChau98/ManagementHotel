@@ -3,14 +3,23 @@
                     xmlns:local="clr-namespace:ManagementHotel.ResourceXAML"
                     xmlns:mainViewModel="clr-namespace:ManagementHotel.ViewModels"
                     xmlns:receptionist="clr-namespace:ManagementHotel.ViewModels.ReceptionistVM"
-                    xmlns:booking="clr-namespace:ManagementHotel.ViewModels.ReceptionistVM.BookingVM">
+                    xmlns:booking="clr-namespace:ManagementHotel.ViewModels.ReceptionistVM.BookingVM"
+                    xmlns:staff="clr-namespace:ManagementHotel.ViewModels.EmployerVM"
+                    xmlns:manager="clr-namespace:ManagementHotel.ViewModels.ManagerVM">
     <mainViewModel:MainViewModel x:Key="MainVM"></mainViewModel:MainViewModel>
     <!--Receptionist-->
     <receptionist:RoomViewModel x:Key="RoomVM"></receptionist:RoomViewModel>
     <receptionist:ServiceViewModel x:Key="ServiceVM"></receptionist:ServiceViewModel>
     <booking:AddCustomerViewModel x:Key="AddCustomerVM"></booking:AddCustomerViewModel>
+    <booking:AddServiceViewModel x:Key="AddServiceVM"></booking:AddServiceViewModel>
+    <!--staff-->
+    <staff:EmployeeViewModel x:Key="EmployeeVM"></staff:EmployeeViewModel>
+    <staff:AccountViewModel x:Key="AccountVM"></staff:AccountViewModel>
     
     <!--Manager-->
+    <manager:CustomerViewModel x:Key="CustomerVM"></manager:CustomerViewModel>
+    <manager:RoomViewModel x:Key="ManagerRoomVM"></manager:RoomViewModel>
+    <manager:ServiceViewModel x:Key="ManagerServiceVM"></manager:ServiceViewModel>
     
     
 </ResourceDictionary>

@@ -44,21 +44,37 @@ namespace ManagementHotel.ViewModels
                     if (acc.Role == "Manager")
                     {
                         ManagerWindow mw = new ManagerWindow();
+                        p.Visibility = Visibility.Collapsed;
                         mw.ShowDialog();
-                        p.Close();
+
+                        username = "";
+                        password = "";
+
+                        p.Visibility = Visibility.Visible;
+
                     }
 
                     if (acc.Role == "Receptionist")
                     {
                         ReceptionistWindow rw = new ReceptionistWindow();
+                        p.Visibility = Visibility.Collapsed;
                         rw.ShowDialog();
-                        p.Close();
+
+                        username = "";
+                        password = "";
+
+                        p.Visibility = Visibility.Visible;
                     }
                     if (acc.Role == "Staff")
                     {
                         EmployerWindow ew = new EmployerWindow();
+                        p.Visibility = Visibility.Collapsed;
                         ew.ShowDialog();
-                        p.Close();
+
+                        username = "";
+                        password = "";
+
+                        p.Visibility = Visibility.Visible;
                     }
                 }
             });
